@@ -11,3 +11,4 @@
 | 6-concat.py | python script that prints "welcome to Holberton school!" by concatening two strings |
 | 7-edges.py | python script that prints substrings of a define string |
 | 8-concat_edges.py | python script that prints a string by using substring concatenation |
+| 9-easter_egg.py | python script that prints "The Zen of Python" |
