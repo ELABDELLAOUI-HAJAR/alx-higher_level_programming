@@ -3,4 +3,6 @@
 | Task | Description |
 | ---- | ----------- |
 | 0-run | Script shell that execute a python file |
-| 1-run_inline | Script shell that execute a python code |.
+| 1-run_inline | Script shell that execute a python code |
+| 2-print.py | python script that ptint the following message "Programming is like building a multilingual puzzle |
+
