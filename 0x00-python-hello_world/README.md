@@ -9,3 +9,5 @@
 | 4-print_float.py | python script that prints a float number by using f-strings |
 | 5-print_string.py | python script that prints a string 3 times than prints the first 9 character of a string |
 | 6-concat.py | python script that prints "welcome to Holberton school!" by concatening two strings |
+| 7-edges.py | python script that prints substrings of a define string |
+| 8-concat_edges.py | python script that prints a string by using substring concatenation |
