@@ -13,3 +13,5 @@
 | 8-concat_edges.py | python script that prints a string by using substring concatenation |
 | 9-easter_egg.py | python script that prints "The Zen of Python" |
 | 10-check_cycle.c | C function that checks if a linked list has a cycle or not |
+| 100-write.py | Python script that prints a message in the stderr by using sys write function |
+| 101-compile | Script shell that compile python script file |
