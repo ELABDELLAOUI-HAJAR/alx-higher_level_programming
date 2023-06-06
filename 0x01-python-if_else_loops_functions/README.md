@@ -16,3 +16,4 @@
 | 12-main.py | Python funtion that prints the numbers from 1 to 100 separated by a space <br/>- multiple of 3 replaced with 'Fizz' <br/>- multiple of 5 replaced with 'Buzz'<br/>- multiple of 3 and 5 replaced with 'FizzBuzz' |
 | 100-print_tebahpla.py | python script that prints the ASCII alphabet, in reverse order, alternating lowercase and uppercase (z in lowercase and Y in uppercase) |
 | 101-remove_char_at.py | Python script that creates a copy of the string, removing the character at the position n |
+| 102-magic_calculation.py | Python script that does exactly the same as the following Python bytecode |
