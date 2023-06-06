@@ -12,3 +12,4 @@
 | 8-uppercase.py | Python function that prints a string in uppercase |
 | 9-print_last_digit.py | Python function that prints the last digit of a giving number |
 | 10-add.py |  Python function that adds to numbers |
+| 11-pow.py | Python function that computes a to the power of b and return the value |
