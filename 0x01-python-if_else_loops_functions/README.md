@@ -9,4 +9,5 @@
 | 5-print_comb2.py | Python script that prints number from 0 to 99 separated with ", " |
 | 6-print_comb3.py | Python script that prints all possible different combinations of two digits |
 | 7-islower.py | Python function that checks if the giving character id lower or not |
-| 8-uppercase.py | Python function that prints a string in uppercase | 
+| 8-uppercase.py | Python function that prints a string in uppercase |
+| 9-print_last_digit.py | python function that prints the last digit of a giving number | 
