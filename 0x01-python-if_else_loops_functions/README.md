@@ -2,4 +2,5 @@
 | Task | Description |
 | ---- | ----------- |
 | 0-positive_or_negative.py | Python script that checks if a random number is positive, negative or zero |
-| 1-last_digit.py | Python script that checks the last digit of a random number within it's > 5, == 0 or (< 6 and != 0) | 
+| 1-last_digit.py | Python script that checks the last digit of a random number within it's > 5, == 0 or (< 6 and != 0) |
+| 2-print_alphabet.py | Python script that prints the alphabet in lowercase | 
