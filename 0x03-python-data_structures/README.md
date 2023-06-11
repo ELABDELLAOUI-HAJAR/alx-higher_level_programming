@@ -9,3 +9,4 @@
 | 5-no_c.py | function that removes all characters c and C from a string |
 | 6-print_matrix_integer.py |  function that prints a matrix of integer |
 | 7-add_tuple.py |  function that adds 2 tuples |
+| 8-multiple_returns.py | function that returns a tuple with the length of a string and its first character |
