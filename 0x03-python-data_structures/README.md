@@ -8,3 +8,4 @@
 | 4-new_in_list.py | function that replaces an element in a list at a specific position without modifying the original list |
 | 5-no_c.py | function that removes all characters c and C from a string |
 | 6-print_matrix_integer.py |  function that prints a matrix of integer |
+| 7-add_tuple.py |  function that adds 2 tuples |
