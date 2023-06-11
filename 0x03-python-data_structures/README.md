@@ -14,3 +14,4 @@
 | 10-divisible_by_2.py | function that finds all multiples of 2 in a list |
 | 11-delete_at.py | function that deletes the item at a specific position in a list |
 | 12-switch.py |  function that switch value of a and b |
+| 13-is_palindrome.c | function in C that checks if a singly linked list is a palindrome, Return: 0 if it is not a palindrome, 1 if it is a palindrome |
