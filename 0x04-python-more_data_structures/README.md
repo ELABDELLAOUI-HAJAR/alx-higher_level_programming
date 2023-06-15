@@ -13,3 +13,5 @@
 | 9-multiply_by_2.py | Python function that returns a new dictionary with all values multiplied by 2 |
 | 10-best_score.py | Python function that returns a key with the biggest integer value |
 | 11-multiply_list_map.py | Python function that returns a list with all values multiplied by a number by using map and without using any loops |
+| 12-roman_to_int.py | Python function that converts a Roman numeral to an integer |
+
