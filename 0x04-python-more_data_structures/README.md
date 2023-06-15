@@ -15,3 +15,4 @@
 | 11-multiply_list_map.py | Python function that returns a list with all values multiplied by a number by using map and without using any loops |
 | 12-roman_to_int.py | Python function that converts a Roman numeral to an integer |
 | 100-weight_average.py | function that returns the weighted average of all integers tuple (<score>, <weight>) |
+| 101-square_matrix_map.py | Python function that computes the square value of all integers of a matrix using map |
