@@ -7,3 +7,4 @@
 | 3-safe_print_division.py | Python function that divides 2 integers and prints the result |
 | 4-list_division.py | Python function that divides element by element 2 lists |
 | 5-raise_exception.py | Python function that raises a TypeError Exception |
+| 6-raise_exception_msg.py | Python function that raises a NameError Exception with a message |
