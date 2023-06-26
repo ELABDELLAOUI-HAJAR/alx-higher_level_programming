@@ -5,3 +5,4 @@
 0x02-python-import_modules : we learn about modules and importing packages<br/>
 0x03-python-data_structures : we learn about lists and data structures<br/>
 0x04-python-more_data_structures :we learn about lambda and more data structures : sets, dictionary<br/>
+0x05-python-exceptions : we learn about handling Exceptions in python<br/>
