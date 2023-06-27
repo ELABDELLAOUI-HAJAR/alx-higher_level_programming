@@ -2,3 +2,4 @@
 | Task | Description |
 | ---- | ----------- |
 | 0-square.py | Create an empty class square |
+| 1-square.py | Create a class square with a private attribute size |
