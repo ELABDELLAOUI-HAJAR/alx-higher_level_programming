@@ -1,0 +1,131 @@
+# 0-add_integer.txt
+
+===========================
+How to Use 0-add_integer.py
+===========================
+
+This library has on function called ``add_integer()``.
+
+Numbers
+=======
+
+``add_integer()`` returns the addition of its arguments. For numbers,
+that value is equivalent to using ``+`` operator. 
+
+it works with 2 positives integers
+
+::
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(1, 2)
+	3
+
+it works with 2 integers (1 positive and 1 negative)
+
+::
+
+	>>> add_integer(100, -15)
+	85
+
+it works with 2 negatives integers
+
+::
+
+	>>> add_integer(-15, -2)
+	-17
+
+it works with float also after casting to int
+
+::
+
+	>>> add_integer(3.2, 5)
+	8
+
+it works with 2 floats
+
+::
+
+	>>> add_integer(5.6, 9.1)
+	14
+
+it works with 2 negatives floats
+
+::
+
+	>>> add_integer(-18.2, -0.5)
+	-18
+
+it works with a single int arg
+
+::
+
+	>>> add_integer(2)
+	100
+
+it works with a single float arg
+
+::
+
+	>>> add_integer(0.25)
+	98
+		
+Non-Numbers
+===========
+
+``add_integer()`` expect two integer or two floats otherwize raise
+a TypeError exception with the message ``a must be an integer`` or 
+``b must be an integer``
+
+::
+
+	>>> add_integer("str", 2)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+::
+
+	>>> add_integer(3, "string")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+::
+
+	>>> add_integer("str", "abc")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+::
+
+	>>> add_integer("str")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+::
+
+	>>> add_integer(float('inf'), 5)
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+::
+
+	>>> add_integer(-3, float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+::
+
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+::
+
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
+
+::
+
+	>>> add_integer(5.3, float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
