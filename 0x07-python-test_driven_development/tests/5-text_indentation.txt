@@ -1,0 +1,146 @@
+# 5-text_indentation.txt
+# Author : HAJAR EL ABDELLAOUI
+
+=================================
+How To Use 5-text_indentation.txt
+=================================
+
+This library contain one function ``text_indentation()``
+that print a text with 2 new lines after each of these
+characters: ``.`` ``?`` ``:``
+
+Valid Cases:
+============
+
+A text without those characters
+
+::
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	>>> text_indentation("My name is HAJAR!!")
+	My name is HAJAR!!
+
+A text with those characters
+
+::
+
+	>>> text_indentation("Hello, How are you? I'm fine thank you. What about you?")
+	Hello, How are you?
+	<BLANKLINE>
+	I'm fine thank you.
+	<BLANKLINE>
+	What about you?
+	<BLANKLINE>
+
+A text contain \n character and those characters
+
+::
+
+	>>> text_indentation("Hello, How are you? \n I'm fine thank you. What about you?")
+	Hello, How are you?
+	<BLANKLINE>
+	<BLANKLINE>
+	I'm fine thank you.
+	<BLANKLINE>
+	What about you?
+	<BLANKLINE>
+
+A text that contain just spaces
+
+::
+
+	>>> text_indentation("                ")
+
+A text that contain spaces between text lines
+
+::
+
+	>>> text_indentation("    Alx is good experience.    Where we learn to do hard things.   \n\n fighting...!!")
+	Alx is good experience.
+	<BLANKLINE>
+	Where we learn to do hard things.
+	<BLANKLINE>
+	<BLANKLINE>
+	<BLANKLINE>
+	fighting.
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	!!
+
+A text is an empty string
+
+::
+
+	>>> text_indentation("")
+
+
+Complex text
+
+::
+
+	>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+	... Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
+	... Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
+	... Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. \
+	... Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum \
+	... rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo \
+	... stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
+	... cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
+	... beatiorem! Iam ruinas videres")
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+	<BLANKLINE>
+	Quonam modo?
+	<BLANKLINE>
+	Utrum igitur tibi litteram videor an totas paginas commovere?
+	<BLANKLINE>
+	Non autem hoc:
+	<BLANKLINE>
+	igitur ne illud quidem.
+	<BLANKLINE>
+	Fortasse id optimum, sed ubi illud:
+	<BLANKLINE>
+	Plus semper voluptatis?
+	<BLANKLINE>
+	Teneo, inquit, finem illi videri nihil dolere.
+	<BLANKLINE>
+	Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+	<BLANKLINE>
+	Si id dicis, vicimus.
+	<BLANKLINE>
+	Inde sermone vario sex illa a Dipylo stadia confecimus.
+	<BLANKLINE>
+	Sin aliud quid voles, postea.
+	<BLANKLINE>
+	Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+	<BLANKLINE>
+	Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+
+Invalid Cases:
+==============
+Text is a number
+
+::
+
+	>>> text_indentation(27)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+Text is a dictionary
+
+::
+
+	>>> text_indentation({"first_name": "HAJAR", "last_name": "EL ABDELLAOUI"})
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+Text is None
+
+::
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
