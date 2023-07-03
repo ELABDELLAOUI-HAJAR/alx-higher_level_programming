@@ -11,3 +11,4 @@
 | 6-rectangle.py | Add a class attribute to Rectangle class|
 | 7-rectangle.py | Add a class attribute print_symbol to Rectangle class and use it in the class representation |
 | 8-rectangle.py | Add a static method bigger_or_equal that returns the biggest rectangle based on the area |
+| 9-rectangle.py | Add a class method square that returns a new Rectangle instance with width == height == size |
