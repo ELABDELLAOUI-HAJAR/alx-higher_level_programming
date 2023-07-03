@@ -7,4 +7,5 @@
 | 2-rectangle.py | Add to Rectangle class area and perimeter methods |
 | 3-rectangle.py | Add print and str methods to Rectangle class that prints a reclangle bu using # |
 | 4-rectangle.py | Add repr method to Rectangle class that return a string representation of the rectangle |
+| 5-rectangle.py | Add the implementation of __del__ to print a message when a rectangle is deleted |
 
