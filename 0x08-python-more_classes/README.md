@@ -4,5 +4,5 @@
 | ---- | ----------- |
 | 0-rectangle.py | Define an empty class Rectangle that defines a rectangle |
 | 1-rectangle.py | Define a class Rectangle that defines a rectangle by width and height |
-| 2-rectangle.py | Add to Rectangle class area and perimeter functions |
-
+| 2-rectangle.py | Add to Rectangle class area and perimeter methods |
+| 3-rectangle.py | Add print and str methods to Rectangle class that prints a reclangle bu using # |
