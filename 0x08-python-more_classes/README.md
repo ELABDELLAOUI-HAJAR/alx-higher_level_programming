@@ -6,3 +6,5 @@
 | 1-rectangle.py | Define a class Rectangle that defines a rectangle by width and height |
 | 2-rectangle.py | Add to Rectangle class area and perimeter methods |
 | 3-rectangle.py | Add print and str methods to Rectangle class that prints a reclangle bu using # |
+| 4-rectangle.py | Add repr method to Rectangle class that return a string representation of the rectangle |
+
