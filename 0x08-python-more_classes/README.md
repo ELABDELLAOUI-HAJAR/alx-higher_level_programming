@@ -10,3 +10,4 @@
 | 5-rectangle.py | Add the implementation of __del__ to print a message when a rectangle is deleted |
 | 6-rectangle.py | Add a class attribute to Rectangle class|
 | 7-rectangle.py | Add a class attribute print_symbol to Rectangle class and use it in the class representation |
+| 8-rectangle.py | Add a static method bigger_or_equal that returns the biggest rectangle based on the area |
