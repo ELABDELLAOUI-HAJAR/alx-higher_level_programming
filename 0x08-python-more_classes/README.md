@@ -3,3 +3,4 @@
 | Task | Description |
 | ---- | ----------- |
 | 0-rectangle.py | Define an empty class Rectangle that defines a rectangle |
+| 1-rectangle.py | Define a class Rectangle that defines a rectangle by width and height |
