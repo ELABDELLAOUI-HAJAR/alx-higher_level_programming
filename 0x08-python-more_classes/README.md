@@ -9,3 +9,4 @@
 | 4-rectangle.py | Add repr method to Rectangle class that return a string representation of the rectangle |
 | 5-rectangle.py | Add the implementation of __del__ to print a message when a rectangle is deleted |
 | 6-rectangle.py | Add a class attribute to Rectangle class|
+| 7-rectangle.py | Add a class attribute print_symbol to Rectangle class and use it in the class representation |
