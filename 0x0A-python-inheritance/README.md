@@ -10,3 +10,4 @@
 | 5-base_geometry.py | Define an empty class BaseGeometry |
 | 6-base_geometry.py | Add a method area to the BaseGeometry class |
 | 7-base_geometry.py | Add a method integer_validator to BaseGeometry class |
+| 8-rectangle.py | create Rectangle class that inherite from BaseGeometry class and has 2 attributes width and height that will be validate with integer_validator method |
