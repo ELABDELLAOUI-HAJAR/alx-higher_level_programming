@@ -12,3 +12,4 @@
 | 7-base_geometry.py | Add a method integer_validator to BaseGeometry class |
 | 8-rectangle.py | create Rectangle class that inherite from BaseGeometry class and has 2 attributes width and height that will be validate with integer_validator method |
 | 9-rectangle.py | Implement area, str, print methods to Rectangle class |
+| 10-square.py | create a Square class with size attribute and area method that inherit from Rectangle class |
