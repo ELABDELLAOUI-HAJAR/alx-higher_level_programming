@@ -94,3 +94,16 @@ class Rectangle(Base):
         """returns the Rectangle string representation"""
         return "[Rectangle] (" + str(self.id) + ") " + str(self.x) + "/" \
             + str(self.y) + " - " + str(self.width) + "/" + str(self.height)
+
+    def update(self, *args):
+        """update Rectangle attributes with:
+            - 1st argument should be the id attribute
+            - 2nd argument should be the width attribute
+            - 3rd argument should be the height attribute
+            - 4th argument should be the x attribute
+            - 5th argument should be the y attribute
+        """
+        if args is not None and len(args) != 0:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for i in range(len(args)):
+                setattr(self, attrs[i], args[i])

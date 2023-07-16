@@ -9,4 +9,6 @@
 0x06-python-classes : we learn about classes in python <br/>
 0x07-python-test_driven_development : we will learn about unittest and doctest in python <br/>
 0x08-python-more_classes : we will practice more about classes <br/>
-0x09-python-everything_is_object : we will learn more about object in Python
+0x09-python-everything_is_object : we will learn more about object in Python<br/>
+0x0A-python-inheritance : we will learn about inheritance in Python <br/>
+0x0C-python-almost_a_circle : In this project, you will review everything about Python<br/>

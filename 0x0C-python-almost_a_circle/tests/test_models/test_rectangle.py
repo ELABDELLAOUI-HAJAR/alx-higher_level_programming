@@ -273,3 +273,170 @@ class TestRectangle(unittest.TestCase):
             rec2.display()
             self.assertEqual(out.getvalue(),
                              "\n\n\n\n##########\n##########\n")
+
+    def test_update_id(self):
+        """Test update method by changing the id attribute"""
+        rec = Rectangle(5, 4, 6, 1, 91)
+        rec.update(99)
+        self.assertEqual(rec.id, 99)
+        self.assertEqual(rec.__str__(), "[Rectangle] (99) 6/1 - 5/4")
+
+    def test_update_2_attrs(self):
+        """Test update method by changing id and width attributes"""
+        rec = Rectangle(5, 4, 6, 1, 91)
+        rec.update(99, 10)
+        self.assertEqual(rec.id, 99)
+        self.assertEqual(rec.width, 10)
+        self.assertEqual(rec.__str__(), "[Rectangle] (99) 6/1 - 10/4")
+
+    def test_update_3_attrs(self):
+        """Test update method by changing id, width and
+            height attributes
+        """
+        rec = Rectangle(5, 4, 6, 1, 91)
+        rec.update(99, 10, 2)
+        self.assertEqual(rec.id, 99)
+        self.assertEqual(rec.width, 10)
+        self.assertEqual(rec.height, 2)
+        self.assertEqual(rec.__str__(), "[Rectangle] (99) 6/1 - 10/2")
+
+    def test_update_4_attrs(self):
+        """Test update method by changing id, width,
+            height and x attributes
+        """
+        rec = Rectangle(5, 4, 6, 1, 91)
+        rec.update(99, 10, 2, 2)
+        self.assertEqual(rec.id, 99)
+        self.assertEqual(rec.width, 10)
+        self.assertEqual(rec.height, 2)
+        self.assertEqual(rec.x, 2)
+        self.assertEqual(rec.__str__(), "[Rectangle] (99) 2/1 - 10/2")
+
+    def test_update_5_attrs(self):
+        """Test update method by changing id, width,
+            height, x and y attributes
+        """
+        rec = Rectangle(5, 4, 6, 1, 91)
+        rec.update(99, 10, 2, 2, 0)
+        self.assertEqual(rec.id, 99)
+        self.assertEqual(rec.width, 10)
+        self.assertEqual(rec.height, 2)
+        self.assertEqual(rec.x, 2)
+        self.assertEqual(rec.y, 0)
+        self.assertEqual(rec.__str__(), "[Rectangle] (99) 2/0 - 10/2")
+
+    def test_update_more_args(self):
+        """Test update method with more arguments"""
+        rec = Rectangle(5, 4, 6, 1, 91)
+        with self.assertRaises(IndexError):
+            rec.update(99, 10, 2, 2, 0, 14)
+
+    def test_update_wrong_type_width(self):
+        """Test update 2 args with wrong type for the width"""
+        rec = Rectangle(10, 2, 3, 4)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(32, 3.5)
+
+        self.assertEqual(str(ctx.exception), "width must be an integer")
+
+    def test_update_wrong_type_height(self):
+        """Test update 3 args with wrong type for the height"""
+        rec = Rectangle(5, 4, 1, 0)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(10, 7, (1, 'h'))
+
+        self.assertEqual(str(ctx.exception), "height must be an integer")
+
+    def test_update_wrong_type_x(self):
+        """Test update 4 args with wrong type for x"""
+        rec = Rectangle(2, 5)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(3, 5, 2, ['H', 'I'])
+
+        self.assertEqual(str(ctx.exception), "x must be an integer")
+
+    def test_update_wrong_type_y(self):
+        """Test update 5 args with wrong type for y"""
+        rec = Rectangle(4, 5)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(55, 7, 3, 2, True)
+
+        self.assertEqual(str(ctx.exception), "y must be an integer")
+
+    def test_update_width_zero(self):
+        """Test update the value of width with 0"""
+        rec = Rectangle(5, 3, 1, 7, 66)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(10, 0)
+
+        self.assertEqual(str(ctx.exception), "width must be > 0")
+
+    def test_update_width_negative(self):
+        """Test update the value of width with a negative value"""
+        rec = Rectangle(10, 1)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(3, -9)
+
+        self.assertEqual(str(ctx.exception), "width must be > 0")
+
+    def test_update_height_zero(self):
+        """Test update the value of height with 0"""
+        rec = Rectangle(4, 7, 0, 3)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(87, 6, 0)
+
+        self.assertEqual(str(ctx.exception), "height must be > 0")
+
+    def test_update_height_negative(self):
+        """Test update the value of height with a negative value"""
+        rec = Rectangle(8, 1, 3, 9)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(96, 4, -7)
+
+        self.assertEqual(str(ctx.exception), "height must be > 0")
+
+    def test_update_x_negative(self):
+        """Test update the value of x with a negative value"""
+        rec = Rectangle(7, 2, 1, 3, 102)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(1991, 2, 3, -5)
+
+        self.assertEqual(str(ctx.exception), "x must be >= 0")
+
+    def test_update_y_negative(self):
+        """Test update the value of y with a negative value"""
+        rec = Rectangle(10, 5)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(2, 6, 4, 7, -2)
+
+        self.assertEqual(str(ctx.exception), "y must be >= 0")
+
+    def test_update_without_args(self):
+        """Test update without arguments"""
+        rec = Rectangle(5, 9)
+        rec.update()
+        self.assertEqual(rec.width, 5)
+        self.assertEqual(rec.height, 9)
+        self.assertEqual(rec.x, 0)
+        self.assertEqual(rec.y, 0)
+        self.assertEqual(rec.id, 1)
+
+    def test_update_multiple(self):
+        """Test calling update for the same instance multiple times"""
+        rec = Rectangle(3, 7, 9, 1, 1991)
+        self.assertEqual(rec.__str__(), "[Rectangle] (1991) 9/1 - 3/7")
+
+        rec.update(85)
+        self.assertEqual(rec.__str__(), "[Rectangle] (85) 9/1 - 3/7")
+
+        rec.update(85, 2)
+        self.assertEqual(rec.__str__(), "[Rectangle] (85) 9/1 - 2/7")
+
+        rec.update(85, 2, 10)
+        self.assertEqual(rec.__str__(), "[Rectangle] (85) 9/1 - 2/10")
+
+        rec.update(85, 2, 10, 3)
+        self.assertEqual(rec.__str__(), "[Rectangle] (85) 3/1 - 2/10")
+
+        rec.update(85, 2, 10, 3, 4)
+        self.assertEqual(rec.__str__(), "[Rectangle] (85) 3/4 - 2/10")
