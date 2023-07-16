@@ -95,7 +95,7 @@ class Rectangle(Base):
         return "[Rectangle] (" + str(self.id) + ") " + str(self.x) + "/" \
             + str(self.y) + " - " + str(self.width) + "/" + str(self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """update Rectangle attributes with:
             - 1st argument should be the id attribute
             - 2nd argument should be the width attribute
@@ -107,3 +107,6 @@ class Rectangle(Base):
             attrs = ['id', 'width', 'height', 'x', 'y']
             for i in range(len(args)):
                 setattr(self, attrs[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)

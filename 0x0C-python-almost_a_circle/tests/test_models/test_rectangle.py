@@ -440,3 +440,140 @@ class TestRectangle(unittest.TestCase):
 
         rec.update(85, 2, 10, 3, 4)
         self.assertEqual(rec.__str__(), "[Rectangle] (85) 3/4 - 2/10")
+
+    def test_update_kwargs_with_args(self):
+        """Test passing args and kwargs to update method"""
+        rec = Rectangle(1, 2, 0, 0, 5)
+        self.assertEqual(rec.__str__(), "[Rectangle] (5) 0/0 - 1/2")
+        rec.update(6, 3, 5, 1, 1, height=8, id=32)
+        self.assertEqual(rec.__str__(), "[Rectangle] (6) 1/1 - 3/5")
+
+    def test_update_kwargs_width(self):
+        """Test updating width value by passing key,value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(width=10)
+        self.assertEqual(rec.__str__(), "[Rectangle] (96) 3/4 - 10/2")
+
+    def test_update_kwargs_height(self):
+        """Test updating height value by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(height=20)
+        self.assertEqual(rec.__str__(), "[Rectangle] (96) 3/4 - 1/20")
+
+    def test_update_kwargd_x(self):
+        """Test updating x value by passing key,value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(x=7)
+        self.assertEqual(rec.__str__(), "[Rectangle] (96) 7/4 - 1/2")
+
+    def test_update_kwargs_y(self):
+        """Test updating y value by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(y=12)
+        self.assertEqual(rec.__str__(), "[Rectangle] (96) 3/12 - 1/2")
+
+    def test_update_kwargs_id(self):
+        """Test updating id value by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(id=1991)
+        self.assertEqual(rec.__str__(), "[Rectangle] (1991) 3/4 - 1/2")
+
+    def test_update_multi_order_kwargs(self):
+        """Test updating multiple attributes in order by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(id=25, width=6, height=14, x=9, y=10)
+        self.assertEqual(rec.__str__(), "[Rectangle] (25) 9/10 - 6/14")
+
+    def test_update_multi_disord_kwargs(self):
+        """Test updating multiple attributes not in the order by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        rec.update(x=11, id=98, height=8, y=10, width=6)
+        self.assertEqual(rec.__str__(), "[Rectangle] (98) 11/10 - 6/8")
+
+    def test_update_kwargs_width_zero(self):
+        """Test updating width value to 0 by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(width=0)
+        self.assertEqual(str(ctx.exception), "width must be > 0")
+
+    def test_update_kwargs_width_negative(self):
+        """Test updating width value with a negative value
+        by passing key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(width=-5)
+        self.assertEqual(str(ctx.exception), "width must be > 0")
+
+    def test_update_kwargs_wrong_type_width(self):
+        """Test updating width value with the wrong type by
+        passing key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(width=False)
+        self.assertEqual(str(ctx.exception), "width must be an integer")
+
+    def test_update_kwargs_height_zero(self):
+        """Test updating height value to 0 by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(height=0)
+        self.assertEqual(str(ctx.exception), "height must be > 0")
+
+    def test_update_kwargs_height_negative(self):
+        """Test updating height value with a negative value by
+        passing key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(height=-3)
+        self.assertEqual(str(ctx.exception), "height must be > 0")
+
+    def test_update_kwargs_height_wrong_type(self):
+        """Test updating height value with a wrong type by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(height=['Hello', 'HAJAR'])
+        self.assertEqual(str(ctx.exception), "height must be an integer")
+
+    def test_update_kwargs_wrong_type_x(self):
+        """Test updating x value with a wrong type by passing key, value"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(x=9.25)
+        self.assertEqual(str(ctx.exception), "x must be an integer")
+
+    def test_update_kwargs_negative_x(self):
+        """Test updating x value with a negative value by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(x=-8)
+        self.assertEqual(str(ctx.exception), "x must be >= 0")
+
+    def test_update_kwargs_wrong_type_y(self):
+        """Test updating y value with a wrong type by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(TypeError) as ctx:
+            rec.update(y=(2, True))
+        self.assertEqual(str(ctx.exception), "y must be an integer")
+
+    def test_update_kwargs_negative_y(self):
+        """Test updating y value with a negative value by passing
+        key, value
+        """
+        rec = Rectangle(1, 2, 3, 4, 96)
+        with self.assertRaises(ValueError) as ctx:
+            rec.update(y=-5)
+        self.assertEqual(str(ctx.exception), "y must be >= 0")
