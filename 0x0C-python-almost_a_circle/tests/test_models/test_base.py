@@ -4,6 +4,9 @@
 
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
+from unittest.mock import patch
+from io import StringIO
 
 
 class TestBase(unittest.TestCase):
@@ -58,3 +61,15 @@ class TestBase(unittest.TestCase):
         """Test instanciate Base with a String value"""
         baseTest = Base("1991")
         self.assertEqual(baseTest.id, "1991")
+
+    def test_to_json_string(self):
+        """Test to_json_string method of Base"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dic = r1.to_dictionary()
+        json_dic = Base.to_json_string([dic])
+        expected = "[{}]\n".format(dic.__str__())
+        with patch("sys.stdout", new=StringIO()) as out:
+            print(json_dic)
+            self.assertEqual(out.getvalue(), expected.replace("'", "\""))
+        self.assertIs(type(json_dic), str)
+        self.assertIs(type(dic), dict)
