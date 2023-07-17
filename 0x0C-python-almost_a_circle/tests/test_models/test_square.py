@@ -247,6 +247,11 @@ class TestSquare(unittest.TestCase):
 
     def test_square_save_to_file_empty(self):
         """Test save_to_file method with an empty list arg"""
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+
         Square.save_to_file([])
         with patch("sys.stdout", new=StringIO()) as out:
             with open("Square.json", "r") as file:

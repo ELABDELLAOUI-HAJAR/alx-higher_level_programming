@@ -648,6 +648,10 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file_empty(self):
         """Test save_to_file method for Rectangle with empty list"""
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
         Rectangle.save_to_file([])
         with patch("sys.stdout", new=StringIO()) as out:
             with open("Rectangle.json", "r") as file:
