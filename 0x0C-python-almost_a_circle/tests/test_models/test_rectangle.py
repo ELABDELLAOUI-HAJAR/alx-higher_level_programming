@@ -620,3 +620,50 @@ class TestRectangle(unittest.TestCase):
             with open("Rectangle.json", "r") as file:
                 print(file.read())
             self.assertEqual(out.getvalue(), expected.replace("'", "\""))
+
+    def test_save_to_file_None(self):
+        """Test save_to_file method with None arg"""
+        Rectangle.save_to_file(None)
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Rectangle.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), "[]\n")
+
+    def test_from_json_string(self):
+        """returns the list of the JSON string representation json_string"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        dic1 = r1.to_dictionary()
+        dic2 = r2.to_dictionary()
+        list_input = [dic1, dic2]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_save_to_file_empty(self):
+        """Test save_to_file method for Rectangle with empty list"""
+        Rectangle.save_to_file([])
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Rectangle.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), "[]\n")
+
+    def test_rectangle_to_json_string_empty(self):
+        """Test to_json_string for Rectangle with empty list arg"""
+        json_str = Rectangle.to_json_string([])
+        self.assertEqual(json_str, "[]")
+
+    def test_rectangle_to_json_string_None(self):
+        """Test to_json_string for Rectangle with None arg"""
+        json_str = Rectangle.to_json_string(None)
+        self.assertEqual(json_str, "[]")
+
+    def test_rectangle_from_json_string_None(self):
+        """Test from_json_string for Rectangle with None arg"""
+        json_list = Rectangle.from_json_string(None)
+        self.assertListEqual(json_list, [])
+
+    def test_rectangle_from_json_string_empty(self):
+        """Test from_json_string for Rectangle with empty list arg"""
+        json_list = Rectangle.from_json_string("")
+        self.assertListEqual(json_list, [])

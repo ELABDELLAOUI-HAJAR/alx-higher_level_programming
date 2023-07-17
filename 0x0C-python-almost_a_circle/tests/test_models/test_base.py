@@ -73,3 +73,11 @@ class TestBase(unittest.TestCase):
             self.assertEqual(out.getvalue(), expected.replace("'", "\""))
         self.assertIs(type(json_dic), str)
         self.assertIs(type(dic), dict)
+
+    def test_to_json_string_None(self):
+        """Test to_json_string method with None arg"""
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_to_json_string_empty(self):
+        """Test to_json_string method with empty list"""
+        self.assertEqual(Base.to_json_string([]), "[]")

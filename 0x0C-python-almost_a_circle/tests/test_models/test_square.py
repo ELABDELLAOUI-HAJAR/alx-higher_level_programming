@@ -191,8 +191,8 @@ class TestSquare(unittest.TestCase):
         self.assertDictEqual(s2.to_dictionary(), dic)
         self.assertFalse(s1 == s2)
 
-    def test_to_json_string(self):
-        """Test to_json_string class method"""
+    def test_to_save_to_file_square(self):
+        """Test save_to_file class method"""
         s1 = Square(3)
         s2 = Square(6, 1, 5, 91)
         dic1 = s1.to_dictionary()
@@ -203,3 +203,39 @@ class TestSquare(unittest.TestCase):
             with open("Square.json", "r") as file:
                 print(file.read())
             self.assertEqual(out.getvalue(), expected.replace("'", "\""))
+
+    def test_square_save_to_file_None(self):
+        """Test save_to_file method with None arg"""
+        Square.save_to_file(None)
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Square.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), "[]\n")
+
+    def test_square_save_to_file_empty(self):
+        """Test save_to_file method with an empty list arg"""
+        Square.save_to_file([])
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Square.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), "[]\n")
+
+    def test_square_to_json_string(self):
+        """Test to_json_string method for square class"""
+        s1 = Square(3)
+        s2 = Square(6, 1, 5, 91)
+        dic1 = s1.to_dictionary()
+        dic2 = s2.to_dictionary()
+        json_str = Square.to_json_string([dic1, dic2])
+        expected = "[{}, {}]".format(dic1, dic2)
+        self.assertEqual(json_str, expected.replace("'", "\""))
+
+    def test_square_to_json_string_None(self):
+        """Test to_json_string method with None arg"""
+        json_str = Square.to_json_string(None)
+        self.assertEqual(json_str, "[]")
+
+    def test_square_to_json_string_empty(self):
+        """Test to_json_string method with empty list arg"""
+        json_str = Square.to_json_string([])
+        self.assertEqual(json_str, "[]")
