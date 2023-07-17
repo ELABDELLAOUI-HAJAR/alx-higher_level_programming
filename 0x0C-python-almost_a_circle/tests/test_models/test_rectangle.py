@@ -607,3 +607,16 @@ class TestRectangle(unittest.TestCase):
         r2.update(**r1_dictionary)
         self.assertDictEqual(r2.to_dictionary(), dic)
         self.assertFalse(r1 == r2)
+
+    def test_save_to_file(self):
+        """Test save_to_file method for list of rectangles"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        dic1 = r1.to_dictionary()
+        dic2 = r2.to_dictionary()
+        Rectangle.save_to_file([r1, r2])
+        expected = "[{}, {}]\n".format(dic1, dic2)
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Rectangle.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), expected.replace("'", "\""))

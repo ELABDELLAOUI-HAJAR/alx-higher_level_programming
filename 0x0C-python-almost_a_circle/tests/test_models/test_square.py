@@ -190,3 +190,16 @@ class TestSquare(unittest.TestCase):
         s2.update(**s1.to_dictionary())
         self.assertDictEqual(s2.to_dictionary(), dic)
         self.assertFalse(s1 == s2)
+
+    def test_to_json_string(self):
+        """Test to_json_string class method"""
+        s1 = Square(3)
+        s2 = Square(6, 1, 5, 91)
+        dic1 = s1.to_dictionary()
+        dic2 = s2.to_dictionary()
+        Square.save_to_file([s1, s2])
+        expected = "[{}, {}]\n".format(dic1, dic2)
+        with patch("sys.stdout", new=StringIO()) as out:
+            with open("Square.json", "r") as file:
+                print(file.read())
+            self.assertEqual(out.getvalue(), expected.replace("'", "\""))
