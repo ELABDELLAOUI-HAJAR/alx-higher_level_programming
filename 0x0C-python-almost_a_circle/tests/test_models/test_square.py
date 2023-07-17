@@ -157,3 +157,36 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square.__str__(), "[Square] (15) 0/4 - 3")
         square.update(id=20, x=3, size=7, y=9)
         self.assertEqual(square.__str__(), "[Square] (20) 3/9 - 7")
+
+    def test_to_dictionary(self):
+        """Test to_dictionary method of square"""
+        square = Square(10, 2, 1)
+        dic = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertDictEqual(square.to_dictionary(), dic)
+
+    def test_to_dictionary_min(self):
+        """Test to_dictionary method for the minimum instance
+        creation
+        """
+        square = Square(6)
+        dic = {'id': 1, 'x': 0, 'size': 6, 'y': 0}
+        self.assertDictEqual(square.to_dictionary(), dic)
+
+    def test_type_return_dict_square(self):
+        """Test to check the type of the returned value of
+        to_dictionary method of square
+        """
+        square = Square(10, 2, 1)
+        self.assertIs(type(square.to_dictionary()), dict)
+
+    def test_to_dictionary_with_manip(self):
+        """Test to_dictionary method with some manipulations"""
+        s1 = Square(10, 2, 1)
+        dic = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertDictEqual(s1.to_dictionary(), dic)
+        s2 = Square(1, 1)
+        dic2 = {'id': 2, 'x': 1, 'size': 1, 'y': 0}
+        self.assertDictEqual(s2.to_dictionary(), dic2)
+        s2.update(**s1.to_dictionary())
+        self.assertDictEqual(s2.to_dictionary(), dic)
+        self.assertFalse(s1 == s2)
