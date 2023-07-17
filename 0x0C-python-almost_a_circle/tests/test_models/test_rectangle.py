@@ -577,3 +577,33 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError) as ctx:
             rec.update(y=-5)
         self.assertEqual(str(ctx.exception), "y must be >= 0")
+
+    def test_to_dictionary(self):
+        """Test to_dictionary method"""
+        rec = Rectangle(1, 2, 3, 4, 96)
+        dic = {'x': 3, 'y': 4, 'id': 96, 'height': 2, 'width': 1}
+        self.assertDictEqual(rec.to_dictionary(), dic)
+
+    def test_to_dictionary_minim(self):
+        """Test to_dictionary method with a minimum instance"""
+        rec = Rectangle(1, 2)
+        dic = {'x': 0, 'y': 0, 'id': 1, 'height': 2, 'width': 1}
+        self.assertDictEqual(rec.to_dictionary(), dic)
+
+    def test_type_returned_value_dict(self):
+        """Test that check the type of the returned value by
+        to_dictionary method
+        """
+        r1 = Rectangle(10, 2, 1, 9)
+        self.assertIs(type(r1.to_dictionary()), dict)
+
+    def test_to_dictionary_2(self):
+        """Test to_dictionary method by adding some manipulations"""
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dictionary = r1.to_dictionary()
+        dic = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertDictEqual(r1_dictionary, dic)
+        r2 = Rectangle(1, 1)
+        r2.update(**r1_dictionary)
+        self.assertDictEqual(r2.to_dictionary(), dic)
+        self.assertFalse(r1 == r2)
