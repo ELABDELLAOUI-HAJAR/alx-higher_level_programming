@@ -16,6 +16,20 @@ class Base:
             * args : list_dictionaries
             * returns the JSON string representation
                 of list_dictionaries
+        from_json_string :
+            * args : json_string
+            * returns the list of the JSON string
+                representation json_string
+
+    class methods:
+        save_to_file :
+            * args : cls, list_objs
+            * writes the JSON string representation of
+                list_objs to a file
+        create :
+            * args : cls, **dictionary
+            * returns an instance with all attributes
+                already set
     """
     __nb_objects = 0
 
@@ -56,3 +70,13 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ == "Rectangle":
+            new = cls(1, 2)
+        else:
+            new = cls(3)
+        new.update(**dictionary)
+        return new

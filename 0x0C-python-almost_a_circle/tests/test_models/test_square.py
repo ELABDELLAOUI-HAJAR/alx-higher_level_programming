@@ -239,3 +239,12 @@ class TestSquare(unittest.TestCase):
         """Test to_json_string method with empty list arg"""
         json_str = Square.to_json_string([])
         self.assertEqual(json_str, "[]")
+
+    def test_square_create(self):
+        """Test create class method for Square"""
+        sq1 = Square(3)
+        dic1 = sq1.to_dictionary()
+        sq2 = Square.create(**dic1)
+        self.assertEqual(sq2.__str__(), "[Square] (1) 0/0 - 3")
+        self.assertFalse(sq1 == sq2)
+        self.assertFalse(sq1 is sq2)

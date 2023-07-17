@@ -667,3 +667,12 @@ class TestRectangle(unittest.TestCase):
         """Test from_json_string for Rectangle with empty list arg"""
         json_list = Rectangle.from_json_string("")
         self.assertListEqual(json_list, [])
+
+    def test_rectangle_create(self):
+        """Test create class method"""
+        rec = Rectangle(10, 2)
+        dic1 = rec.to_dictionary()
+        rec2 = Rectangle.create(**dic1)
+        self.assertEqual(rec2.__str__(), "[Rectangle] (1) 0/0 - 10/2")
+        self.assertFalse(rec2 == rec)
+        self.assertFalse(rec2 is rec)
