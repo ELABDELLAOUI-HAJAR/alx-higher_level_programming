@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define Base class"""
 import json
+import os
 
 
 class Base:
@@ -30,6 +31,9 @@ class Base:
             * args : cls, **dictionary
             * returns an instance with all attributes
                 already set
+        load_from_file :
+            * args : cls
+            *  returns a list of instances
     """
     __nb_objects = 0
 
@@ -80,3 +84,17 @@ class Base:
             new = cls(3)
         new.update(**dictionary)
         return new
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = "{}.json".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
+            return []
+
+        with open(filename, "r", encoding="utf-8") as file:
+            str_file = file.read()
+
+        list_dict = cls.from_json_string(str_file)
+        return [cls.create(**dic) for dic in list_dict]

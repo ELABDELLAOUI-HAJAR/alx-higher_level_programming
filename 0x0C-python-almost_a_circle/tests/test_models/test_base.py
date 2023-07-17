@@ -21,6 +21,14 @@ class TestBase(unittest.TestCase):
         baseTest = Base()
         self.assertEqual(baseTest.id, 1)
 
+    def test_base_list_id(self):
+        """Test Base with list id"""
+        self.assertEqual(Base([1, 5]).id, [1, 5])
+
+    def test_base_boolean_id(self):
+        """Test Base with Boolean id"""
+        self.assertEqual(Base(False).id, False)
+
     def test_id_with_value(self):
         """Test id Base attribute with value"""
         baseTest = Base(5)
@@ -40,6 +48,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(base1.id, 1)
         self.assertEqual(base2.id, 2)
         self.assertEqual(base3.id, 3)
+        base3.id = 5
+        self.assertEqual(base3.id, 5)
 
     def test_mix_instances(self):
         """Test with multiple mix Base instances"""
@@ -73,6 +83,11 @@ class TestBase(unittest.TestCase):
             self.assertEqual(out.getvalue(), expected.replace("'", "\""))
         self.assertIs(type(json_dic), str)
         self.assertIs(type(dic), dict)
+
+    def test_to_json_string_without_args(self):
+        """Test to_json_string method without args"""
+        with self.assertRaises(TypeError):
+            Base.to_json_string()
 
     def test_to_json_string_None(self):
         """Test to_json_string method with None arg"""

@@ -15,6 +15,39 @@ class TestSquare(unittest.TestCase):
         """method that execute before each test case"""
         Base._Base__nb_objects = 0
 
+    def test_square_without_args(self):
+        """create square without passing args"""
+        with self.assertRaises(TypeError):
+            Square()
+
+    def test_square_1_arg(self):
+        """Test creating square by passing 1 argument"""
+        square = Square(3)
+        self.assertEqual(square.size, 3)
+        self.assertEqual(square.width, 3)
+        self.assertEqual(square.height, 3)
+        self.assertEqual(square.x, 0)
+        self.assertEqual(square.y, 0)
+        self.assertEqual(square.id, 1)
+
+    def test_multiple_squares(self):
+        """Test creating multiple squares"""
+        s1 = Square(3, 2, 0)
+        s2 = Square(5, 5, 2)
+        s3 = Square(2, 0, 0, 91)
+        self.assertEqual(s1.size, 3)
+        self.assertEqual(s2.size, 5)
+        self.assertEqual(s3.size, 2)
+        self.assertEqual(s1.x, 2)
+        self.assertEqual(s2.x, 5)
+        self.assertEqual(s3.x, 0)
+        self.assertEqual(s1.y, 0)
+        self.assertEqual(s2.y, 2)
+        self.assertEqual(s3.y, 0)
+        self.assertEqual(s1.id, 1)
+        self.assertEqual(s2.id, 2)
+        self.assertEqual(s3.id, 91)
+
     def test_square(self):
         """Test instanciate a square and calling area,
         display methods
@@ -248,3 +281,43 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(sq2.__str__(), "[Square] (1) 0/0 - 3")
         self.assertFalse(sq1 == sq2)
         self.assertFalse(sq1 is sq2)
+
+    def test_square_create_id(self):
+        """Test create class method for Square by passing id"""
+        dictionary = {"id": 5}
+        square = Square.create(**dictionary)
+        self.assertEqual(square.id, 5)
+
+    def test_square_create_2_args(self):
+        """Test create class method for Square by passing 2 args"""
+        dictionary = {"x": 10, "y": 5}
+        square = Square.create(**dictionary)
+        self.assertEqual(square.x, 10)
+        self.assertEqual(square.y, 5)
+
+    def test_square_create_4_args(self):
+        """Test create class method for Square by passing 4 attrs values"""
+        dict1 = {"x": 8, "size": 7, "y": 3, "id": 10}
+        square = Square.create(**dict1)
+        self.assertEqual(square.x, 8)
+        self.assertEqual(square.y, 3)
+        self.assertEqual(square.id, 10)
+        self.assertEqual(square.size, 7)
+
+    def test_square_load_from_file(self):
+        """Test load_from_file for Square"""
+        s1 = Square(6, 1, 5)
+        s2 = Square(2, 0, 4, 7)
+        l_input = [s1, s2]
+        Square.save_to_file(l_input)
+        l_output = Square.load_from_file()
+        for i in range(len(l_output)):
+            self.assertEqual(l_input[i].__str__(), l_output[i].__str__())
+
+    def test_square_load_from_file_not_exist(self):
+        """Test load_from_file method with file doesn't exist"""
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        self.assertListEqual(Rectangle.load_from_file(), [])

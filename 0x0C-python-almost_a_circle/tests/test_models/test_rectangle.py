@@ -6,6 +6,7 @@ from unittest.mock import patch
 from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
+import os
 
 
 class TestRectangle(unittest.TestCase):
@@ -144,6 +145,11 @@ class TestRectangle(unittest.TestCase):
         """Test instanciate Rectangle without args"""
         with self.assertRaises(TypeError):
             Rectangle()
+
+    def test_rectangle_with_1_arg(self):
+        """Test instanciate Rectangle with one arg"""
+        with self.assertRaises(TypeError):
+            Rectangle(1)
 
     def test_area(self):
         """Test the calcul of the rectangle area"""
@@ -676,3 +682,49 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec2.__str__(), "[Rectangle] (1) 0/0 - 10/2")
         self.assertFalse(rec2 == rec)
         self.assertFalse(rec2 is rec)
+
+    def test_rectangle_create_id(self):
+        """Test create class method"""
+        dictionary = {"id": 1991}
+        rec = Rectangle.create(**dictionary)
+        self.assertEqual(rec.id, 1991)
+
+    def test_rectangle_create_2_args(self):
+        """Test create class method by passing 2 attrs value"""
+        dictionary = {"width": 10, "height": 5}
+        rec = Rectangle.create(**dictionary)
+        self.assertEqual(rec.width, 10)
+        self.assertEqual(rec.height, 5)
+
+    def test_rectangle_create_5_args(self):
+        """Test create class method by passing 5 attrs values"""
+        dictionary = {"width": 5, "x": 9, "y": 3, "height": 2, "id": 91}
+        rec = Rectangle.create(**dictionary)
+        self.assertEqual(rec.id, 91)
+        self.assertEqual(rec.width, 5)
+        self.assertEqual(rec.height, 2)
+        self.assertEqual(rec.x, 9)
+        self.assertEqual(rec.y, 3)
+
+    def test_rectangle_load_from_file(self):
+        """Test load_from_file for Rectangle"""
+        r1 = Rectangle(10, 2, 1, 3, 91)
+        r2 = Rectangle(4, 5)
+        l_input = [r1, r2]
+        Rectangle.save_to_file(l_input)
+        l_output = Rectangle.load_from_file()
+        for i in range(len(l_output)):
+            self.assertEqual(l_output[i].__str__(), l_input[i].__str__())
+
+    def test_rectangle_load_from_file_not_exist(self):
+        """Test load_from_file method with file doesn't exist"""
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        self.assertListEqual(Rectangle.load_from_file(), [])
+
+    def test_rectangle_load_from_file_with_args(self):
+        """Test calling load_from_file with argument"""
+        with self.assertRaises(TypeError):
+            Rectangle.load_from_file("file")
