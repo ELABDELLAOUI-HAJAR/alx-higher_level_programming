@@ -12,3 +12,5 @@ In this Project we will continue our learning of Sql Queries
 | 6-states.sql | script that creates the database hbtn_0d_usa and the table states (in the database hbtn_0d_usa) on MySQL server |
 | 7-cities.sql | script that creates the database hbtn_0d_usa and the table cities (in the database hbtn_0d_usa) on MySQL server |
 | 8-cities_of_california_subquery.sql | script that lists all the cities of California that can be found in the database hbtn_0d_usa |
+| 9-cities_by_state_join.sql | script that lists all cities contained in the database hbtn_0d_usa |
+
