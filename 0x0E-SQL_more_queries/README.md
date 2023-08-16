@@ -10,4 +10,4 @@ In this Project we will continue our learning of Sql Queries
 | 4-never_empty.sql |  script that creates the table id_not_null on MySQL server |
 | 5-unique_id.sql | script that creates the table unique_id on MySQL server |
 | 6-states.sql | script that creates the database hbtn_0d_usa and the table states (in the database hbtn_0d_usa) on MySQL server |
-
+| 7-cities.sql | script that creates the database hbtn_0d_usa and the table cities (in the database hbtn_0d_usa) on MySQL server |
