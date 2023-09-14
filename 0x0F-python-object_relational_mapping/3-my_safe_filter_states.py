@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""script that lists all states with a name starting
-with N (upper N) from the database hbtn_0e_0_usa
+"""script that takes in an argument and displays all
+values in the states table of hbtn_0e_0_usa where
+name matches the argument in a safe way
 """
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
@@ -13,6 +14,7 @@ if __name__ == '__main__':
     USER = argv[1]
     PASS = argv[2]
     DB = argv[3]
+    state_name = argv[4]
 
     db = MySQLdb.connect(host=HOST,
                          port=PORT,
@@ -20,10 +22,10 @@ if __name__ == '__main__':
                          passwd=PASS,
                          db=DB,
                          charset="utf8")
-
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id"
-    cursor.execute(query)
+
+    query = "SELECT * FROM states WHERE name = %(name)s ORDER BY states.id"
+    cursor.execute(query, {'name': state_name})
     rows = cursor.fetchall()
     for row in rows:
         print(row)
