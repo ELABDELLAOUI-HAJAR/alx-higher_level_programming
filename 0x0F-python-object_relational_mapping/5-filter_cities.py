@@ -31,11 +31,14 @@ if __name__ == "__main__":
 
     cursor.execute(query, {'name': state_name})
     rows = cursor.fetchall()
-    for i in range(len(rows)):
-        if i != len(rows) - 1:
-            print(rows[i][0], end=", ")
-        else:
-            print(rows[i][0])
+    if rows:
+        list_len = len(rows)
+        for i in range(list_len):
+            if i != list_len - 1:
+                print(rows[i][0], end=", ")
+        print(rows[list_len - 1][0])
+    else:
+        print()
 
     cursor.close()
     db.close()
