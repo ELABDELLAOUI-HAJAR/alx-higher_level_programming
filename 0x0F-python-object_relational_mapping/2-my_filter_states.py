@@ -24,7 +24,7 @@ if __name__ == "__main__":
                          charset="utf8")
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id"
+    query = "SELECT * FROM states WHERE name = BINARY '{}' ORDER BY states.id"
     cursor.execute(query.format(state_name))
     rows = cursor.fetchall()
     for row in rows:
