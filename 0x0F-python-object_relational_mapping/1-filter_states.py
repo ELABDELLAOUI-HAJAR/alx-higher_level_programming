@@ -22,7 +22,10 @@ if __name__ == '__main__':
                          charset="utf8")
 
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id"
+    query = " ".join(["SELECT * FROM states",
+                      "WHERE name LIKE BINARY 'N%'",
+                      "ORDER BY states.id"])
+
     cursor.execute(query)
     rows = cursor.fetchall()
     for row in rows:
